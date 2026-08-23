@@ -3,251 +3,403 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XH MOTOR — Admin</title>
+<title>XH MOTOR ADMIN</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
+
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
   background:#f7f7fa;
-  color:#15121c;
+  color:#17131d;
+  font-family:Arial,Helvetica,sans-serif;
 }
+
+/* HEADER */
 .header{
-  background:linear-gradient(110deg,#7b20e8,#8f35ff,#6920c5);
-  color:#fff;
-  padding:22px 30px;
+  height:92px;
+  padding:12px 18px;
+  background:linear-gradient(110deg,#741de4,#9635ff,#681bc0);
+  color:white;
   display:flex;
   align-items:center;
-  gap:20px;
+  gap:14px;
 }
+
 .logo{
-  width:80px;
-  height:80px;
+  width:66px;
+  height:66px;
+  border-radius:18px;
   object-fit:cover;
-  border-radius:22px;
-  background:#fff;
+  background:white;
 }
+
+.brand{
+  min-width:0;
+}
+
 .brand h1{
   margin:0;
-  font-size:32px;
+  font-size:25px;
+  line-height:1;
   font-weight:900;
 }
+
 .brand p{
   margin:7px 0 0;
-  font-size:19px;
+  font-size:14px;
   font-weight:700;
   opacity:.8;
 }
+
 .admin{
   margin-left:auto;
+  padding:10px 17px;
   border:2px solid rgba(255,255,255,.45);
-  border-radius:35px;
-  padding:13px 25px;
-  font-size:20px;
+  border-radius:30px;
+  font-size:15px;
   font-weight:900;
 }
+
+/* MAIN */
 .container{
-  max-width:1200px;
+  max-width:1100px;
   margin:auto;
-  padding:45px 25px 80px;
+  padding:25px 18px 60px;
 }
+
 h2{
-  font-size:52px;
-  margin:0 0 35px;
+  margin:0 0 20px;
+  font-size:42px;
+  line-height:1;
   font-weight:900;
 }
+
+/* STATS */
 .stats{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:22px;
-  margin-bottom:45px;
+  gap:12px;
+  margin-bottom:22px;
 }
+
 .stat{
   background:#fff;
-  border-radius:30px;
-  padding:30px;
-  box-shadow:0 8px 30px rgba(50,20,80,.08);
+  border-radius:22px;
+  padding:18px 15px;
+  min-height:105px;
+  box-shadow:0 5px 20px rgba(50,20,80,.07);
 }
+
 .stat span{
   display:block;
   color:#777;
+  font-size:13px;
   font-weight:900;
-  font-size:20px;
+  white-space:nowrap;
 }
+
 .stat strong{
   display:block;
-  margin-top:20px;
-  color:#7428e5;
-  font-size:52px;
+  margin-top:12px;
+  color:#7625e5;
+  font-size:34px;
+  line-height:1;
 }
+
+/* CATALOG */
 .panel{
-  background:#fff;
-  border-radius:30px;
-  padding:32px;
-  box-shadow:0 8px 30px rgba(50,20,80,.08);
+  background:white;
+  border-radius:25px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(50,20,80,.07);
 }
+
 .panel-top{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
-  margin-bottom:25px;
+  gap:12px;
+  margin-bottom:17px;
 }
+
 .panel-title{
-  font-size:34px;
+  font-size:25px;
   font-weight:900;
 }
-button{
-  border:0;
-  cursor:pointer;
-  font-weight:900;
-}
+
 .add{
-  background:#7d25eb;
+  background:#7c25e9;
   color:#fff;
-  padding:17px 25px;
-  border-radius:18px;
-  font-size:18px;
+  padding:13px 17px;
+  border-radius:15px;
+  font-size:15px;
+  white-space:nowrap;
 }
+
 .search{
   width:100%;
-  padding:19px 22px;
-  border:3px solid #eadcf5;
-  border-radius:20px;
-  font-size:18px;
+  height:52px;
+  padding:0 17px;
+  border:2px solid #e5d5f1;
+  border-radius:16px;
   outline:none;
-  margin-bottom:25px;
+  font-size:16px;
+  margin-bottom:18px;
 }
+
+/* MOTOR */
 .motor{
-  border:2px solid #eadcf5;
-  border-radius:25px;
+  border:2px solid #eadcf3;
+  border-radius:20px;
   overflow:hidden;
-  margin-bottom:25px;
-  background:#fff;
+  margin-bottom:18px;
+  background:white;
 }
+
+.motor-image{
+  width:100%;
+  max-height:300px;
+  object-fit:cover;
+  display:block;
+}
+
 .motor-body{
-  padding:25px;
+  padding:18px;
 }
+
 .motor-title{
-  font-size:28px;
+  font-size:24px;
   font-weight:900;
 }
+
 .motor-brand{
-  color:#7b28e8;
-  font-size:20px;
+  color:#7625e5;
+  font-size:17px;
   font-weight:900;
-  margin-top:8px;
+  margin-top:5px;
 }
+
 .motor-price{
-  font-size:26px;
+  font-size:23px;
   font-weight:900;
-  margin-top:15px;
+  margin-top:12px;
 }
+
 .motor-status{
   display:inline-block;
-  margin-top:12px;
-  padding:7px 13px;
-  border-radius:20px;
-  background:#eee;
-  font-weight:800;
+  margin-top:10px;
+  padding:6px 11px;
+  border-radius:15px;
+  background:#f0eaf5;
+  color:#6f25d5;
+  font-size:13px;
+  font-weight:900;
 }
+
+.motor-description{
+  margin-top:10px;
+  color:#777;
+  line-height:1.45;
+  font-size:15px;
+}
+
 .actions{
   display:flex;
-  gap:10px;
-  margin-top:20px;
+  gap:8px;
+  margin-top:15px;
 }
-.edit{
-  background:#7d25eb;
-  color:white;
-  padding:12px 20px;
-  border-radius:12px;
-}
+
+.edit,
 .delete{
-  background:#f1eeee;
-  color:#d22;
-  padding:12px 20px;
-  border-radius:12px;
+  padding:10px 15px;
+  border-radius:11px;
+  font-size:14px;
 }
-.empty,.error{
-  padding:50px 20px;
+
+.edit{
+  background:#7c25e9;
+  color:white;
+}
+
+.delete{
+  background:#f2eeee;
+  color:#d22;
+}
+
+.empty,
+.error{
+  padding:40px 15px;
   text-align:center;
   color:#888;
-  font-size:20px;
+  font-size:17px;
   font-weight:700;
 }
-.error{
-  color:#d33;
-}
+
+/* MODAL */
 .modal{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.65);
   z-index:99;
-  padding:20px;
+  background:rgba(0,0,0,.65);
+  padding:15px;
   overflow:auto;
 }
+
 .modal-box{
-  background:#fff;
-  max-width:650px;
-  margin:30px auto;
-  border-radius:28px;
-  padding:30px;
+  background:white;
+  max-width:620px;
+  margin:20px auto;
+  padding:22px;
+  border-radius:24px;
 }
+
 .modal-box h3{
-  margin-top:0;
-  font-size:32px;
+  margin:0 0 18px;
+  font-size:26px;
 }
+
 label{
   display:block;
-  margin-top:18px;
-  margin-bottom:7px;
+  margin:14px 0 6px;
+  font-size:14px;
   font-weight:900;
 }
-input,textarea,select{
+
+input,
+textarea,
+select{
   width:100%;
-  padding:15px;
+  padding:13px;
   border:2px solid #ddd;
-  border-radius:13px;
-  font-size:16px;
+  border-radius:12px;
+  font-size:15px;
+  outline:none;
 }
+
 textarea{
-  min-height:100px;
+  min-height:90px;
 }
-.save{
-  width:100%;
-  margin-top:25px;
-  padding:17px;
-  border-radius:15px;
-  background:#7d25eb;
-  color:#fff;
-  font-size:18px;
-}
+
+.save,
 .cancel{
   width:100%;
-  margin-top:10px;
-  padding:15px;
-  border-radius:15px;
-  background:#eee;
-  font-size:17px;
+  margin-top:18px;
+  padding:14px;
+  border-radius:13px;
+  font-size:16px;
+  font-weight:900;
 }
-@media(max-width:700px){
-  .header{padding:15px 18px}
-  .logo{width:65px;height:65px}
-  .brand h1{font-size:24px}
-  .brand p{font-size:14px}
-  .admin{font-size:14px;padding:10px 15px}
-  .container{padding:30px 16px}
-  h2{font-size:42px}
-  .stats{grid-template-columns:1fr;gap:14px}
-  .stat{padding:22px}
-  .stat strong{font-size:42px}
-  .panel{padding:20px}
-  .panel-top{align-items:flex-start;flex-direction:column}
-  .add{width:100%}
+
+.save{
+  background:#7c25e9;
+  color:white;
+}
+
+.cancel{
+  margin-top:8px;
+  background:#eee;
+}
+
+/* DESKTOP */
+@media(min-width:701px){
+
+  .container{
+    padding:45px 25px 80px;
+  }
+
+  h2{
+    font-size:52px;
+  }
+
+  .stat{
+    padding:25px;
+    min-height:130px;
+  }
+
+  .stat span{
+    font-size:18px;
+  }
+
+  .stat strong{
+    font-size:45px;
+  }
+
+}
+
+/* SMALL PHONE */
+@media(max-width:390px){
+
+  .header{
+    height:82px;
+    padding:10px 13px;
+  }
+
+  .logo{
+    width:56px;
+    height:56px;
+    border-radius:15px;
+  }
+
+  .brand h1{
+    font-size:21px;
+  }
+
+  .brand p{
+    font-size:12px;
+  }
+
+  .admin{
+    padding:8px 12px;
+    font-size:13px;
+  }
+
+  .container{
+    padding:22px 13px 50px;
+  }
+
+  h2{
+    font-size:36px;
+  }
+
+  .stats{
+    gap:8px;
+  }
+
+  .stat{
+    padding:15px 11px;
+    min-height:92px;
+    border-radius:18px;
+  }
+
+  .stat span{
+    font-size:11px;
+  }
+
+  .stat strong{
+    font-size:29px;
+    margin-top:10px;
+  }
+
+  .panel{
+    padding:15px;
+    border-radius:21px;
+  }
+
+  .panel-title{
+    font-size:21px;
+  }
+
+  .add{
+    padding:11px 12px;
+    font-size:13px;
+  }
+
 }
 </style>
 </head>
@@ -256,60 +408,79 @@ textarea{
 
 <header class="header">
 
-  <!-- 如果你的 logo 文件名称不同，可以改这里 -->
-  <img src="xh-logo.jpg" class="logo" onerror="this.style.display='none'">
+<img
+  src="xh-logo.jpg"
+  class="logo"
+  onerror="this.style.display='none'"
+>
 
-  <div class="brand">
-    <h1>XH MOTOR</h1>
-    <p>MOTOR CATALOG ADMIN</p>
-  </div>
+<div class="brand">
+  <h1>XH MOTOR</h1>
+  <p>MOTOR CATALOG ADMIN</p>
+</div>
 
-  <div class="admin">ADMIN</div>
+<div class="admin">ADMIN</div>
 
 </header>
+
 
 <main class="container">
 
 <h2>Dashboard</h2>
 
 <section class="stats">
-  <div class="stat">
-    <span>TOTAL MOTOR</span>
-    <strong id="total">0</strong>
-  </div>
 
-  <div class="stat">
-    <span>AVAILABLE</span>
-    <strong id="available">0</strong>
-  </div>
+<div class="stat">
+<span>TOTAL MOTOR</span>
+<strong id="total">0</strong>
+</div>
 
-  <div class="stat">
-    <span>SOLD</span>
-    <strong id="sold">0</strong>
-  </div>
+<div class="stat">
+<span>AVAILABLE</span>
+<strong id="available">0</strong>
+</div>
+
+<div class="stat">
+<span>SOLD</span>
+<strong id="sold">0</strong>
+</div>
+
 </section>
+
 
 <section class="panel">
 
-  <div class="panel-top">
-    <div class="panel-title">🏍️ Motor Catalog</div>
-    <button class="add" onclick="openAdd()">＋ ADD MOTOR</button>
-  </div>
+<div class="panel-top">
 
-  <input
-    class="search"
-    id="search"
-    placeholder="Search motor..."
-    oninput="render()"
-  >
+<div class="panel-title">
+🏍️ Motor Catalog
+</div>
 
-  <div id="list">
-    <div class="empty">Loading Motor Catalog...</div>
-  </div>
+<button class="add" onclick="openAdd()">
+＋ ADD MOTOR
+</button>
+
+</div>
+
+
+<input
+  class="search"
+  id="search"
+  placeholder="Search motor..."
+  oninput="render()"
+>
+
+
+<div id="list">
+<div class="empty">
+Loading Motor Catalog...
+</div>
+</div>
 
 </section>
 
 </main>
+
 
 <!-- MODAL -->
 
@@ -317,45 +488,102 @@ textarea{
 
 <div class="modal-box">
 
-<h3 id="modalTitle">ADD MOTOR</h3>
+<h3 id="modalTitle">
+ADD MOTOR
+</h3>
 
-<input type="hidden" id="motorId">
+<input
+  type="hidden"
+  id="motorId"
+>
 
 <label>Motor Title</label>
-<input id="title" placeholder="Honda RS-X">
+
+<input
+  id="title"
+  placeholder="Honda RS-X"
+>
+
 
 <label>Brand</label>
-<input id="brand" placeholder="Honda">
+
+<input
+  id="brand"
+  placeholder="Honda"
+>
+
 
 <label>Price</label>
-<input id="price" placeholder="9200">
+
+<input
+  id="price"
+  placeholder="9200"
+>
+
 
 <label>Main Photo URL</label>
-<input id="image" placeholder="https://...jpg">
+
+<input
+  id="image"
+  placeholder="https://..."
+>
+
 
 <label>Description</label>
-<textarea id="description" placeholder="Quality bikes • Trusted deals"></textarea>
+
+<textarea
+  id="description"
+  placeholder="Quality bikes • Trusted deals"
+></textarea>
+
 
 <label>Status</label>
+
 <select id="status">
-  <option value="available">Available</option>
-  <option value="sold">Sold</option>
+
+<option value="available">
+Available
+</option>
+
+<option value="sold">
+Sold
+</option>
+
 </select>
 
+
 <label>WhatsApp</label>
-<input id="whatsapp" placeholder="60123456789">
 
-<button class="save" onclick="saveMotor()">SAVE MOTOR</button>
-<button class="cancel" onclick="closeModal()">CANCEL</button>
+<input
+  id="whatsapp"
+  placeholder="60123456789"
+>
+
+
+<button
+  class="save"
+  onclick="saveMotor()"
+>
+SAVE MOTOR
+</button>
+
+
+<button
+  class="cancel"
+  onclick="closeModal()"
+>
+CANCEL
+</button>
 
 </div>
 </div>
+
 
 <script>
 
-/* =====================================================
-   XH MOTOR SUPABASE CONFIG
-   ===================================================== */
+/* =========================================
+   SUPABASE
+========================================= */
 
 const SUPABASE_URL =
 "https://gpcflswcaudsgzgrtiei.supabase.co";
@@ -365,439 +593,464 @@ const SUPABASE_ANON_KEY =
 
 const supabaseClient =
 window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
+SUPABASE_URL,
+SUPABASE_ANON_KEY
 );
 
-let motors = [];
+let motors=[];
 
-/* =====================================================
-   LOAD
-   ===================================================== */
+
+/* =========================================
+   LOAD MOTORS
+========================================= */
 
 async function loadMotors(){
 
-  const list = document.getElementById("list");
+const list=document.getElementById("list");
 
-  list.innerHTML =
-    '<div class="empty">Loading Motor Catalog...</div>';
+list.innerHTML=
+'<div class="empty">Loading Motor Catalog...</div>';
 
-  try{
+try{
 
-    const {data,error} =
-      await supabaseClient
-      .from("motors")
-      .select("*")
-      .order("created_at",{ascending:false});
+const {data,error}=await supabaseClient
+.from("motors")
+.select("*")
+.order("created_at",{ascending:false});
 
-    if(error) throw error;
+if(error) throw error;
 
-    motors = data || [];
+motors=data||[];
 
-    updateStats();
-    render();
+updateStats();
 
-  }catch(error){
+render();
 
-    console.error(error);
+}catch(error){
 
-    list.innerHTML = `
-      <div class="error">
-        Unable to load motors.<br><br>
-        ${escapeHtml(error.message)}
-      </div>
-    `;
+console.error(error);
 
-  }
+list.innerHTML=`
+<div class="error">
+Unable to load motors.<br><br>
+${escapeHtml(error.message)}
+</div>
+`;
 
 }
 
-/* =====================================================
+}
+
+
+/* =========================================
    STATS
-   ===================================================== */
+========================================= */
 
 function updateStats(){
 
-  const total = motors.length;
+const total=motors.length;
 
-  const available =
-    motors.filter(m =>
-      String(m.status || "available").toLowerCase()
-      !== "sold"
-    ).length;
+const sold=motors.filter(m=>
+String(m.status||"")
+.toLowerCase()==="sold"
+).length;
 
-  const sold =
-    motors.filter(m =>
-      String(m.status || "").toLowerCase()
-      === "sold"
-    ).length;
+const available=total-sold;
 
-  document.getElementById("total").textContent = total;
-  document.getElementById("available").textContent = available;
-  document.getElementById("sold").textContent = sold;
+document.getElementById("total")
+.textContent=total;
+
+document.getElementById("available")
+.textContent=available;
+
+document.getElementById("sold")
+.textContent=sold;
 
 }
 
-/* =====================================================
+
+/* =========================================
    RENDER
-   ===================================================== */
+========================================= */
 
 function render(){
 
-  const list =
-    document.getElementById("list");
+const list=document.getElementById("list");
 
-  const q =
-    document.getElementById("search")
-    .value
-    .toLowerCase()
-    .trim();
+const q=document.getElementById("search")
+.value
+.toLowerCase()
+.trim();
 
-  const filtered =
-    motors.filter(m => {
+const filtered=motors.filter(m=>{
 
-      const text = `
-        ${m.title || ""}
-        ${m.brand || ""}
-        ${m.description || ""}
-      `.toLowerCase();
+const text=`
+${m.title||""}
+${m.brand||""}
+${m.description||""}
+`
+.toLowerCase();
 
-      return text.includes(q);
+return text.includes(q);
 
-    });
+});
 
-  if(!filtered.length){
 
-    list.innerHTML =
-      '<div class="empty">No motors found.</div>';
+if(!filtered.length){
 
-    return;
+list.innerHTML=
+'<div class="empty">No motors found.</div>';
 
-  }
-
-  list.innerHTML =
-    filtered.map(m => `
-
-      <div class="motor">
-
-        ${
-          m.image_url
-          ? `
-            <img
-              src="${escapeAttr(m.image_url)}"
-              style="
-                width:100%;
-                max-height:380px;
-                object-fit:cover;
-                display:block;
-              "
-            >
-          `
-          : ""
-        }
-
-        <div class="motor-body">
-
-          <div class="motor-title">
-            ${escapeHtml(m.title || "Untitled Motor")}
-          </div>
-
-          <div class="motor-brand">
-            ${escapeHtml(m.brand || "")}
-          </div>
-
-          <div class="motor-price">
-            RM ${formatPrice(m.price)}
-          </div>
-
-          <div class="motor-status">
-            ${
-              String(m.status || "available").toLowerCase()
-              === "sold"
-              ? "SOLD"
-              : "AVAILABLE"
-            }
-          </div>
-
-          <div style="
-            margin-top:12px;
-            color:#777;
-            line-height:1.5;
-          ">
-            ${escapeHtml(m.description || "")}
-          </div>
-
-          <div class="actions">
-
-            <button
-              class="edit"
-              onclick="openEdit('${m.id}')">
-              EDIT
-            </button>
-
-            <button
-              class="delete"
-              onclick="deleteMotor('${m.id}')">
-              DELETE
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    `).join("");
+return;
 
 }
 
-/* =====================================================
+
+list.innerHTML=filtered.map(m=>`
+
+<div class="motor">
+
+${
+m.image_url
+?
+`
+<img
+class="motor-image"
+src="${escapeAttr(m.image_url)}"
+onerror="this.style.display='none'"
+>
+`
+:""
+}
+
+<div class="motor-body">
+
+<div class="motor-title">
+${escapeHtml(m.title||"Untitled Motor")}
+</div>
+
+<div class="motor-brand">
+${escapeHtml(m.brand||"")}
+</div>
+
+<div class="motor-price">
+RM ${formatPrice(m.price)}
+</div>
+
+<div class="motor-status">
+
+${
+String(m.status||"available")
+.toLowerCase()==="sold"
+?
+"SOLD"
+:
+"AVAILABLE"
+}
+
+</div>
+
+<div class="motor-description">
+${escapeHtml(m.description||"")}
+</div>
+
+<div class="actions">
+
+<button
+class="edit"
+onclick="openEdit('${m.id}')"
+>
+EDIT
+</button>
+
+<button
+class="delete"
+onclick="deleteMotor('${m.id}')"
+>
+DELETE
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =========================================
    ADD
-   ===================================================== */
+========================================= */
 
 function openAdd(){
 
-  document.getElementById("modalTitle")
-    .textContent = "ADD MOTOR";
+document.getElementById("modalTitle")
+.textContent="ADD MOTOR";
 
-  document.getElementById("motorId").value = "";
+document.getElementById("motorId")
+.value="";
 
-  document.getElementById("title").value = "";
-  document.getElementById("brand").value = "";
-  document.getElementById("price").value = "";
-  document.getElementById("image").value = "";
-  document.getElementById("description").value = "";
-  document.getElementById("status").value = "available";
-  document.getElementById("whatsapp").value = "";
+document.getElementById("title")
+.value="";
 
-  document.getElementById("modal")
-    .style.display = "block";
+document.getElementById("brand")
+.value="";
+
+document.getElementById("price")
+.value="";
+
+document.getElementById("image")
+.value="";
+
+document.getElementById("description")
+.value="";
+
+document.getElementById("status")
+.value="available";
+
+document.getElementById("whatsapp")
+.value="";
+
+document.getElementById("modal")
+.style.display="block";
 
 }
 
-/* =====================================================
+
+/* =========================================
    EDIT
-   ===================================================== */
+========================================= */
 
 function openEdit(id){
 
-  const motor =
-    motors.find(m => String(m.id) === String(id));
+const motor=motors.find(
+m=>String(m.id)===String(id)
+);
 
-  if(!motor) return;
+if(!motor)return;
 
-  document.getElementById("modalTitle")
-    .textContent = "EDIT MOTOR";
+document.getElementById("modalTitle")
+.textContent="EDIT MOTOR";
 
-  document.getElementById("motorId").value =
-    motor.id;
+document.getElementById("motorId")
+.value=motor.id;
 
-  document.getElementById("title").value =
-    motor.title || "";
+document.getElementById("title")
+.value=motor.title||"";
 
-  document.getElementById("brand").value =
-    motor.brand || "";
+document.getElementById("brand")
+.value=motor.brand||"";
 
-  document.getElementById("price").value =
-    motor.price || "";
+document.getElementById("price")
+.value=motor.price||"";
 
-  document.getElementById("image").value =
-    motor.image_url || motor.image || "";
+document.getElementById("image")
+.value=motor.image_url||"";
 
-  document.getElementById("description").value =
-    motor.description || "";
+document.getElementById("description")
+.value=motor.description||"";
 
-  document.getElementById("status").value =
-    motor.status || "available";
+document.getElementById("status")
+.value=motor.status||"available";
 
-  document.getElementById("whatsapp").value =
-    motor.whatsapp || "";
+document.getElementById("whatsapp")
+.value=motor.whatsapp||"";
 
-  document.getElementById("modal")
-    .style.display = "block";
+document.getElementById("modal")
+.style.display="block";
 
 }
 
-/* =====================================================
+
+/* =========================================
    CLOSE
-   ===================================================== */
+========================================= */
 
 function closeModal(){
 
-  document.getElementById("modal")
-    .style.display = "none";
+document.getElementById("modal")
+.style.display="none";
 
 }
 
-/* =====================================================
+
+/* =========================================
    SAVE
-   ===================================================== */
+========================================= */
 
 async function saveMotor(){
 
-  const id =
-    document.getElementById("motorId").value;
+const id=
+document.getElementById("motorId").value;
 
-  const title =
-    document.getElementById("title").value.trim();
+const title=
+document.getElementById("title").value.trim();
 
-  const brand =
-    document.getElementById("brand").value.trim();
+const brand=
+document.getElementById("brand").value.trim();
 
-  const price =
-    document.getElementById("price").value.trim();
+const price=
+document.getElementById("price").value.trim();
 
-  const image =
-    document.getElementById("image").value.trim();
+const image=
+document.getElementById("image").value.trim();
 
-  const description =
-    document.getElementById("description").value.trim();
+const description=
+document.getElementById("description").value.trim();
 
-  const status =
-    document.getElementById("status").value;
+const status=
+document.getElementById("status").value;
 
-  const whatsapp =
-    document.getElementById("whatsapp").value.trim();
+const whatsapp=
+document.getElementById("whatsapp").value.trim();
 
-  if(!title){
 
-    alert("Please enter Motor Title.");
-    return;
+if(!title){
 
-  }
+alert("Please enter Motor Title.");
 
-  const payload = {
-
-    title: title,
-
-    brand: brand,
-
-    price: Number(price) || 0,
-
-    image_url: image,
-
-    description: description,
-
-    status: status,
-
-    whatsapp: whatsapp
-
-  };
-
-  try{
-
-    let result;
-
-    if(id){
-
-      result =
-        await supabaseClient
-        .from("motors")
-        .update(payload)
-        .eq("id",id);
-
-    }else{
-
-      result =
-        await supabaseClient
-        .from("motors")
-        .insert([payload]);
-
-    }
-
-    if(result.error)
-      throw result.error;
-
-    closeModal();
-
-    await loadMotors();
-
-    alert("Motor saved successfully.");
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Unable to save motor:\n\n" +
-      error.message
-    );
-
-  }
+return;
 
 }
 
-/* =====================================================
+
+const payload={
+
+title:title,
+
+brand:brand,
+
+price:Number(price)||0,
+
+image_url:image,
+
+description:description,
+
+status:status,
+
+whatsapp:whatsapp
+
+};
+
+
+try{
+
+let result;
+
+
+if(id){
+
+result=await supabaseClient
+.from("motors")
+.update(payload)
+.eq("id",id);
+
+}else{
+
+result=await supabaseClient
+.from("motors")
+.insert([payload]);
+
+}
+
+
+if(result.error)
+throw result.error;
+
+
+closeModal();
+
+await loadMotors();
+
+alert("Motor saved successfully.");
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Unable to save motor:\n\n"+
+error.message
+);
+
+}
+
+}
+
+
+/* =========================================
    DELETE
-   ===================================================== */
+========================================= */
 
 async function deleteMotor(id){
 
-  const ok =
-    confirm(
-      "Delete this motor?\n\nThis cannot be undone."
-    );
+if(!confirm(
+"Delete this motor?\n\nThis cannot be undone."
+))
+return;
 
-  if(!ok) return;
 
-  try{
+try{
 
-    const {error} =
-      await supabaseClient
-      .from("motors")
-      .delete()
-      .eq("id",id);
+const {error}=await supabaseClient
+.from("motors")
+.delete()
+.eq("id",id);
 
-    if(error) throw error;
+if(error)throw error;
 
-    await loadMotors();
+await loadMotors();
 
-  }catch(error){
+}catch(error){
 
-    console.error(error);
-
-    alert(
-      "Unable to delete motor:\n\n" +
-      error.message
-    );
-
-  }
+alert(
+"Unable to delete motor:\n\n"+
+error.message
+);
 
 }
 
-/* =====================================================
+}
+
+
+/* =========================================
    HELPERS
-   ===================================================== */
+========================================= */
 
 function formatPrice(value){
 
-  const number =
-    Number(value) || 0;
-
-  return number.toLocaleString("en-MY");
+return(
+Number(value)||0
+).toLocaleString("en-MY");
 
 }
+
 
 function escapeHtml(value){
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
+
 
 function escapeAttr(value){
 
-  return escapeHtml(value);
+return escapeHtml(value);
 
 }
 
-/* =====================================================
+
+/* =========================================
    START
-   ===================================================== */
+========================================= */
 
 loadMotors();
 
