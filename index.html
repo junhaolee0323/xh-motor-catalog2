@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#7b2cff">
+<title>XH MOTOR — Used Motorcycles</title>
+<style>
+:root{--purple:#7b2cff;--purple2:#a855f7;--deep:#170827;--ink:#17121d;--muted:#77717d;--line:#e7dff0;--soft:#f8f5fb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#fff}
+button,input{font:inherit}.top{background:linear-gradient(135deg,#6d20d9,#8b36ff 55%,#6f20cf);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 18px #2c0b4a30}
+.nav{height:78px;display:flex;align-items:center;gap:14px;padding:10px 18px;max-width:1200px;margin:auto}.logo{width:54px;height:54px;border-radius:12px;object-fit:cover;background:#fff}.brand{font-weight:900;letter-spacing:1.2px;font-size:18px;flex:1}.navbtn{border:1px solid #ffffff55;background:#ffffff18;color:#fff;border-radius:28px;padding:12px 16px;font-weight:800}.navbtn:hover{background:#fff;color:var(--purple)}
+.ticker{height:38px;background:#5d19ae;border-top:1px solid #ffffff30;border-bottom:1px solid #ffffff30;display:flex;align-items:center;overflow:hidden;white-space:nowrap}.ticker span{font-size:12px;font-weight:900;letter-spacing:2px;animation:move 18s linear infinite}@keyframes move{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+.hero{background:#09050d;min-height:350px;display:flex;align-items:center;overflow:hidden}.hero-inner{max-width:1200px;width:100%;margin:auto;display:grid;grid-template-columns:1fr 1fr;min-height:350px}.hero-copy{padding:55px 28px;color:#fff;display:flex;justify-content:center;flex-direction:column;background:radial-gradient(circle at 75% 50%,#5f20b833,transparent 50%)}.eyebrow{font-size:12px;letter-spacing:2px;color:#d7b8ff;font-weight:900}.hero h1{font-size:clamp(48px,8vw,86px);line-height:.9;margin:16px 0;font-weight:950;letter-spacing:-3px}.hero h1 b{color:#a855f7}.hero h2{margin:0 0 8px;font-size:23px}.hero p{color:#bcb3c4;margin:0}.hero-art{background:#13091d center/cover no-repeat url('https://raw.githubusercontent.com/junhaolee0323/xh-motor-catalog2/main/motor-racing.jpg');min-height:350px;position:relative}.hero-art:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#09050d55,transparent 45%,#7b2cff22)}
+.controls{max-width:1200px;margin:auto;padding:20px 18px;display:flex;gap:12px;position:relative}.home-btn{border:0;background:#f0e8fa;color:#542080;border-radius:14px;padding:15px 20px;font-weight:900}.search{flex:1;position:relative}.search input{width:100%;height:52px;border:2px solid #a967e4;border-radius:15px;padding:0 50px 0 18px;outline:none}.search span{position:absolute;right:17px;top:11px;font-size:25px}
+.intro{max-width:1200px;margin:auto;padding:10px 18px 25px;display:flex;gap:22px;align-items:center}.intro img{width:105px;height:150px;object-fit:cover;border-radius:18px;border:2px solid #e5d6ef}.intro h2{margin:0 0 8px;font-size:34px}.intro h2 b{color:var(--purple)}.intro p{margin:0;color:var(--muted);line-height:1.6}
+.catalog{max-width:1200px;margin:auto;padding:0 18px 60px}.section-head{display:flex;align-items:end;justify-content:space-between;border-top:1px solid var(--line);padding-top:22px}.section-head h2{font-size:35px;margin:0}.count{color:#7b2cff;font-weight:900}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px}.card{background:#fff;border:1px solid #ddd4e5;border-radius:20px;overflow:hidden;box-shadow:0 7px 25px #3a185414;cursor:pointer;transition:.2s}.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px #3a185425}.photo{height:220px;background:linear-gradient(135deg,#f7f3fa,#eee6f6);position:relative}.photo img{width:100%;height:100%;object-fit:cover}.badge{position:absolute;left:10px;top:10px;background:#7b2cff;color:#fff;padding:6px 10px;border-radius:20px;font-size:11px;font-weight:900}.card-body{padding:14px}.card h3{margin:0 0 7px;font-size:18px}.meta{font-size:12px;color:#777;line-height:1.6}.price{font-size:20px;color:#6c20d1;font-weight:950;margin-top:10px}.empty{text-align:center;padding:50px;color:#888;background:var(--soft);border-radius:20px}.detail{position:fixed;inset:0;background:#0009;z-index:50;display:none;padding:18px;overflow:auto}.detail.open{display:flex;align-items:center;justify-content:center}.modal{width:min(1000px,100%);background:#fff;border-radius:25px;overflow:hidden;box-shadow:0 25px 80px #0007}.close{position:absolute;right:25px;top:20px;background:#fff;border:0;border-radius:50%;width:44px;height:44px;font-size:25px;z-index:3}.detail-main{display:grid;grid-template-columns:1.1fr .9fr}.gallery{background:#100817;padding:18px}.mainimg{height:430px;width:100%;object-fit:contain;border-radius:15px;background:#160d1c}.thumbs{display:flex;gap:8px;margin-top:10px;overflow:auto}.thumbs img{width:70px;height:55px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent}.thumbs img.active{border-color:#a855f7}.info{padding:30px}.info .tag{color:#7b2cff;font-weight:900;letter-spacing:1px;font-size:12px}.info h2{font-size:36px;margin:8px 0}.bigprice{font-size:29px;font-weight:950;color:#6c20d1;margin:14px 0 22px}.specs{display:grid;grid-template-columns:1fr 1fr;gap:10px}.spec{background:#f7f3fa;border-radius:12px;padding:11px}.spec small{display:block;color:#888;font-size:11px}.spec strong{font-size:14px}.desc{color:#666;line-height:1.7;margin:20px 0}.wa{display:block;text-align:center;background:#20b85a;color:#fff;text-decoration:none;padding:16px;border-radius:14px;font-weight:950}.loading{text-align:center;padding:55px;color:#777}
+footer{background:#12091a;color:#aaa;text-align:center;padding:35px 18px;font-size:12px}.footerbrand{color:#fff;font-weight:900;letter-spacing:2px;margin-bottom:8px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero-inner{grid-template-columns:1fr}.hero-art{display:none}.hero{min-height:310px}.detail-main{grid-template-columns:1fr}.mainimg{height:330px}}
+@media(max-width:560px){.nav{height:68px}.logo{width:46px;height:46px}.brand{font-size:14px}.navbtn{padding:10px 12px;font-size:12px}.controls{padding:14px 12px}.home-btn{padding:14px}.intro{padding:8px 14px 22px}.intro img{width:78px;height:110px}.intro h2{font-size:25px}.catalog{padding:0 12px 40px}.section-head h2{font-size:27px}.grid{grid-template-columns:1fr 1fr;gap:10px}.photo{height:175px}.card{border-radius:15px}.card-body{padding:11px}.card h3{font-size:15px}.price{font-size:17px}.detail{padding:0}.modal{min-height:100%;border-radius:0}.info{padding:22px}.info h2{font-size:29px}.mainimg{height:300px}.close{right:15px;top:15px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+<div class="nav">
+<img class="logo" src="https://raw.githubusercontent.com/junhaolee0323/xh-motor-catalog2/main/xh-logo.jpg" alt="XH MOTOR">
+<div class="brand">XH USED MOTORCYCLES</div>
+<button class="navbtn" onclick="contactSeller()">☎ WHATSAPP</button>
+<button class="navbtn">🇲🇾 MY⌄</button>
+</div>
+
+<div class="ticker">
+<span>🏍️ XH USED MOTORCYCLES　•　QUALITY BIKES　•　TRUSTED DEALS　•　EASY TO ARRANGE　•　READY TO RIDE</span>
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-inner">
+
+<div class="hero-copy">
+<div class="eyebrow">XH USED MOTORCYCLES</div>
+<h1>QUALITY<br><b>BIKES</b></h1>
+<h2>TRUSTED DEALS</h2>
+<p>READY TO RIDE　•　EASY TO ARRANGE</p>
+</div>
+
+<div class="hero-art"></div>
+
+</div>
+</section>
+
+<div class="controls">
+<button class="home-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">HOME</button>
+
+<div class="search">
+<input id="search" placeholder="SEARCH MOTOR" autocomplete="off">
+<span>⌕</span>
+</div>
+</div>
+
+<section class="intro">
+
+<img src="https://raw.githubusercontent.com/junhaolee0323/xh-motor-catalog2/main/xh-agent.jpg" alt="XH">
+
+<div>
+<h2>XH <b>USED MOTORCYCLES</b></h2>
+<p>Quality bikes • Trusted deals • Easy to arrange. Tap any motorcycle photo below to open the full Motor Detail.</p>
+</div>
+
+</section>
+
+<main class="catalog">
+
+<div class="section-head">
+
+<div>
+<h2>AVAILABLE MOTORCYCLES</h2>
+<div style="color:#888;font-size:13px;margin-top:4px">
+Tap main photo → Motor Detail
+</div>
+</div>
+
+<div class="count" id="count">0 MOTOR</div>
+
+</div>
+
+<div id="grid" class="grid">
+<div class="loading">Loading Motor Catalog…</div>
+</div>
+
+</main>
+
+<div id="detail" class="detail">
+
+<div class="modal">
+
+<button class="close" onclick="closeDetail()">×</button>
+
+<div class="detail-main">
+
+<div class="gallery">
+
+<img id="detailMain" class="mainimg" src="" alt="Motor">
+
+<div id="thumbs" class="thumbs"></div>
+
+</div>
+
+<div class="info">
+
+<div id="detailTag" class="tag">XH USED MOTORCYCLES</div>
+
+<h2 id="detailTitle"></h2>
+
+<div id="detailPrice" class="bigprice"></div>
+
+<div class="specs">
+
+<div class="spec">
+<small>YEAR</small>
+<strong id="dYear">—</strong>
+</div>
+
+<div class="spec">
+<small>MILEAGE</small>
+<strong id="dMileage">—</strong>
+</div>
+
+<div class="spec">
+<small>CC</small>
+<strong id="dCC">—</strong>
+</div>
+
+<div class="spec">
+<small>TRANSMISSION</small>
+<strong id="dTrans">—</strong>
+</div>
+
+<div class="spec">
+<small>CONDITION</small>
+<strong id="dCondition">—</strong>
+</div>
+
+<div class="spec">
+<small>LOCATION</small>
+<strong id="dLocation">—</strong>
+</div>
+
+</div>
+
+<div id="dDesc" class="desc"></div>
+
+<a id="wa" class="wa" href="#" target="_blank" rel="noopener">
+WHATSAPP SELLER
+</a>
+
+</div>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="footerbrand">XH MOTOR</div>
+QUALITY BIKES • TRUSTED DEALS • EASY TO ARRANGE
+</footer>
+
+<script>
+
+const SUPABASE_URL="https://gpcflswcaudsgzgrtiei.supabase.co";
+
+/*
+IMPORTANT:
+Your Supabase anon key goes here.
+Use the anon/public key from Supabase Project Settings → API.
+Do NOT use your service_role key.
+*/
+const SUPABASE_ANON_KEY="PASTE_YOUR_SUPABASE_ANON_KEY_HERE";
+
+const FALLBACK_IMAGE="https://raw.githubusercontent.com/junhaolee0323/xh-motor-catalog2/main/xh-deals.jpg";
+
+let motors=[];
+let filtered=[];
+
+async function loadMotors(){
+
+const grid=document.getElementById("grid");
+
+try{
+
+const r=await fetch(
+`${SUPABASE_URL}/rest/v1/motors?select=*&status=eq.available&order=featured.desc,sort_order.asc,created_at.desc`,
+{
+headers:{
+apikey:SUPABASE_ANON_KEY,
+Authorization:`Bearer ${SUPABASE_ANON_KEY}`
+}
+}
+);
+
+if(!r.ok) throw new Error("Supabase request failed");
+
+motors=await r.json();
+
+filtered=motors;
+
+render();
+
+}catch(e){
+
+grid.innerHTML=
+'<div class="empty" style="grid-column:1/-1">Unable to load Motor Catalog right now.<br>Please refresh the page.</div>';
+
+document.getElementById("count").textContent="0 MOTOR";
+
+console.error(e);
+
+}
+
+}
+
+function imgUrl(path){
+
+if(!path) return FALLBACK_IMAGE;
+
+if(/^https?:\/\//i.test(path)) return path;
+
+return `${SUPABASE_URL}/storage/v1/object/public/motor-photos/${path}`;
+
+}
+
+function money(v){
+
+return v==null
+?"PRICE ON REQUEST"
+:"RM "+Number(v).toLocaleString("en-MY",{minimumFractionDigits:0,maximumFractionDigits:0});
+
+}
+
+function render(){
+
+const grid=document.getElementById("grid");
+
+document.getElementById("count").textContent=`${filtered.length} MOTOR`;
+
+if(!filtered.length){
+
+grid.innerHTML=
+'<div class="empty" style="grid-column:1/-1">No motorcycle found.</div>';
+
+return;
+
+}
+
+grid.innerHTML=filtered.map(m=>`
+
+<article class="card" onclick="openDetail('${m.id}')">
+
+<div class="photo">
+
+<img
+src="${esc(imgUrl(m.main_image))}"
+alt="${esc(m.title)}"
+onerror="this.src='${FALLBACK_IMAGE}'">
+
+${m.featured?'<span class="badge">FEATURED</span>':''}
+
+</div>
+
+<div class="card-body">
+
+<h3>${esc(m.title)}</h3>
+
+<div class="meta">
+${esc(m.brand||"")} ${esc(m.model||"")}<br>
+${m.year||"—"} •
+${m.mileage!=null?Number(m.mileage).toLocaleString():"—"} km •
+${m.cc||"—"} CC
+</div>
+
+<div class="price">
+${money(m.price)}
+</div>
+
+</div>
+
+</article>
+
+`).join("");
+
+}
+
+function esc(s){
+
+return String(s??"").replace(
+/[&<>"']/g,
+c=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#39;"
+}[c])
+);
+
+}
+
+function openDetail(id){
+
+const m=motors.find(x=>x.id===id);
+
+if(!m)return;
+
+document.getElementById("detailTitle").textContent=m.title;
+
+document.getElementById("detailPrice").textContent=money(m.price);
+
+document.getElementById("dYear").textContent=m.year||"—";
+
+document.getElementById("dMileage").textContent=
+m.mileage!=null
+?Number(m.mileage).toLocaleString()+" km"
+:"—";
+
+document.getElementById("dCC").textContent=
+m.cc?m.cc+" CC":"—";
+
+document.getElementById("dTrans").textContent=
+m.transmission||"—";
+
+document.getElementById("dCondition").textContent=
+m.condition||"—";
+
+document.getElementById("dLocation").textContent=
+m.location||"—";
+
+document.getElementById("dDesc").textContent=
+m.description||
+"Quality used motorcycle. Contact XH MOTOR for more details.";
+
+const images=[
+m.main_image,
+...(m.gallery_images||[])
+].filter(Boolean);
+
+const main=document.getElementById("detailMain");
+
+main.src=imgUrl(images[0]||"");
+
+main.onerror=()=>main.src=FALLBACK_IMAGE;
+
+document.getElementById("thumbs").innerHTML=
+images.map((x,i)=>`
+
+<img
+class="${i===0?'active':''}"
+src="${esc(imgUrl(x))}"
+onerror="this.src='${FALLBACK_IMAGE}'"
+onclick="setDetailImage('${esc(imgUrl(x))}',this)">
+
+`).join("");
+
+const number=m.whatsapp||"";
+
+const text=encodeURIComponent(
+`Hi XH MOTOR, I'm interested in ${m.title}${m.price?` (RM ${m.price})`:""}. Is it still available?`
+);
+
+document.getElementById("wa").href=
+number
+?`https://wa.me/${number.replace(/\D/g,"")}?text=${text}`
+:`https://wa.me/?text=${text}`;
+
+document.getElementById("detail").classList.add("open");
+
+document.body.style.overflow="hidden";
+
+}
+
+function setDetailImage(src,el){
+
+document.getElementById("detailMain").src=src;
+
+document
+.querySelectorAll(".thumbs img")
+.forEach(x=>x.classList.remove("active"));
+
+el.classList.add("active");
+
+}
+
+function closeDetail(){
+
+document.getElementById("detail").classList.remove("open");
+
+document.body.style.overflow="";
+
+}
+
+document.getElementById("detail").addEventListener(
+"click",
+e=>{
+if(e.target.id==="detail")closeDetail();
+}
+);
+
+document.getElementById("search").addEventListener(
+"input",
+e=>{
+
+const q=e.target.value.toLowerCase().trim();
+
+filtered=motors.filter(m=>
+[
+m.title,
+m.brand,
+m.model,
+m.year,
+m.cc,
+m.location
+]
+.join(" ")
+.toLowerCase()
+.includes(q)
+);
+
+render();
+
+}
+);
+
+function contactSeller(){
+
+window.open(
+"https://wa.me/?text="+
+encodeURIComponent(
+"Hi XH MOTOR, I would like to ask about your used motorcycles."
+),
+"_blank"
+);
+
+}
+
+loadMotors();
+
+</script>
+
+</body>
+</html>
